@@ -43,6 +43,39 @@ visual vive en `scripts/generar_ppt_comite.py`, así que un cambio de
 marca/colores/logo se hace una sola vez ahí y aplica a todas las semanas
 futuras.
 
+## Plantilla de KPI Comercial (cumplimiento por canal y consultor/RSM)
+
+`plantilla/Plantilla_KPI_Comercial_RSM.xlsx` es un indicador de gestión
+comercial independiente del comité semanal: muestra, de forma tabular y
+gráfica, el cumplimiento y la performance de cada canal de ventas
+(Paneles / Otros) y de cada consultor de ventas (RSM).
+
+```
+plantilla/Plantilla_KPI_Comercial_RSM.xlsx     ← se llena cada periodo (mensual/YTD)
+scripts/crear_plantilla_kpi_comercial.py       ← (re)genera esta plantilla Excel
+```
+
+La plantilla tiene tres hojas:
+
+- **Instrucciones**: cómo llenarla y la convención de colores.
+- **Datos KPI**: tabla de entrada por consultor (Order Intake, Ventas y
+  Backlog por canal, y Presupuesto en Paneles); las columnas de %
+  cumplimiento, totales, Book-to-Bill y Estado (semáforo CUMPLE / EN
+  RIESGO / BAJO) se calculan solas con fórmulas. Incluye 5 filas de
+  ejemplo con datos reales de un periodo YTD y 3 filas en blanco listas
+  para nuevos consultores.
+- **Dashboard**: tarjetas KPI ejecutivas y 5 gráficos que se actualizan
+  solos — Order Intake vs Ventas vs Presupuesto por consultor, %
+  cumplimiento por consultor (con meta de 100%), participación de
+  ventas por zona, backlog por consultor y Book-to-Bill (con meta de
+  1.0x).
+
+Para regenerar la plantilla en blanco desde cero:
+
+```bash
+python scripts/crear_plantilla_kpi_comercial.py
+```
+
 ### Personalizar la plantilla
 
 `scripts/crear_plantilla_excel.py` es el generador de la plantilla Excel.
