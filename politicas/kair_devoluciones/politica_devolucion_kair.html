@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Política de Devolución de Productos KAIR</title>
+<link rel="stylesheet" href="fuentes/fonts.css">
+<style>
+  :root {
+    --navy: #0E2F56;
+    --navy-2: #163E6E;
+    --sage: #8FAF8C;
+    --sage-dark: #5E8A5B;
+    --sage-light: #DDE8DA;
+    --sky: #4A8FD1;
+    --ink: #0E2F56;
+    --paper: #F6F8F7;
+  }
+  @page { size: Letter; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; }
+  body { font-family: 'Quicksand', sans-serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  .page { position: relative; width: 8.5in; height: 11in; overflow: hidden; page-break-after: always; break-after: page; }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+
+  /* Pie de página con versión */
+  .footer { position: absolute; left: 0.45in; bottom: 0.32in; z-index: 5; white-space: nowrap; font-size: 7.5pt; font-weight: 500; padding: 5px 14px; border-radius: 3px; }
+
+  /* Arco decorativo (equivalente al arco naranja del original, en verde KAIR) */
+  .arc { position: absolute; border-radius: 50%; border: 22px solid var(--sage); z-index: 1; }
+
+  /* ---------- Logotipo KAIR ---------- */
+  .kair-logo { display: flex; align-items: flex-end; gap: 0; position: relative; }
+  .kair-logo svg { display: block; }
+
+  /* ---------- PORTADA ---------- */
+  .cover { background: var(--navy); color: #fff; }
+  .cover .arc { width: 4.2in; height: 4.2in; top: -2.3in; right: -1.9in; }
+  .cover .brand { position: absolute; top: 0.6in; left: 0.55in; z-index: 2; }
+  .cover .brand .tag { font-size: 8pt; font-weight: 600; letter-spacing: 0.06em; margin-top: 8px; line-height: 1.35; color: #D5E1EE; }
+  .cover .title { position: absolute; top: 3.05in; left: 0.55in; right: 0.55in; z-index: 2; }
+  .cover .title .light { font-weight: 300; font-size: 40pt; letter-spacing: 0.02em; line-height: 1.05; }
+  .cover .title .bold { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 44pt; line-height: 1.08; }
+  .cover .title .sub { margin-top: 16px; font-size: 13pt; font-weight: 500; color: var(--sage-light); }
+  .cover .rule { position: absolute; top: 6.12in; left: 0; width: 5.5in; height: 1.5px; background: #fff; opacity: .85; }
+  .cover .photo { position: absolute; left: 0; right: 0; bottom: 0; height: 4.78in; background: url('assets/portada_kair.webp') center/cover no-repeat; }
+  .cover .photo::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 0.9in; background: linear-gradient(var(--navy), rgba(14,47,86,0)); }
+  .cover .footer { background: rgba(255,255,255,.85); color: #6B7C8F; }
+
+  /* ---------- PÁGINAS DE CONTENIDO ---------- */
+  .content { position: absolute; left: 0.95in; right: 0.95in; z-index: 3; }
+  .content p, .content li { font-size: 12.6pt; line-height: 1.5; text-align: justify; hyphens: none; }
+  .content h2 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14pt; letter-spacing: 0.01em; margin: 22px 0 14px; text-transform: uppercase; }
+  .content .item { margin-bottom: 16px; }
+  .content .num { font-family: 'Montserrat', sans-serif; font-weight: 800; margin-right: 4px; }
+  .content .lead { font-weight: 600; }
+  .content .note { font-size: 9pt; font-style: italic; line-height: 1.4; font-weight: 500; margin-top: -8px; }
+  .content .star { color: var(--sage-dark); font-weight: 700; font-style: normal; }
+  .mail { font-family: 'Montserrat', sans-serif; font-weight: 800; white-space: nowrap; }
+
+  /* Página 2: fondo claro */
+  .light-page { background: var(--paper); }
+  .light-page .bg { position: absolute; inset: 0; background: url('assets/render_exterior.png') 30% 58%/150% auto no-repeat; opacity: .07; z-index: 0; }
+  .light-page .arc { width: 3.4in; height: 3.4in; top: -2.0in; left: -2.2in; }
+  .light-page .content { top: 1.05in; }
+  .light-page .content h2 { color: var(--navy); }
+  .light-page .content .num { color: var(--navy); }
+  .light-page .strip { position: absolute; right: 0; bottom: 0; width: 5.6in; height: 1.45in; background: url('assets/render_exterior.png') 55% 40%/112% auto no-repeat; z-index: 2; }
+  .light-page .footer { background: var(--navy); color: #C9D6E6; opacity: .9; white-space: nowrap; }
+
+  /* Página 3: fondo azul */
+  .dark-page { background: linear-gradient(160deg, var(--navy-2) 0%, var(--navy) 60%, #0A2544 100%); color: #fff; }
+  .dark-page .content { top: 0.75in; }
+  .dark-page .content h2 { color: #fff; margin-top: 18px; }
+  .dark-page .deco { position: absolute; width: 7in; height: 7in; right: -3.2in; top: 2.6in; border: 1px solid rgba(255,255,255,.08); transform: rotate(45deg); z-index: 0; }
+  .dark-page .deco.b { right: -2.4in; top: 3.4in; }
+  .dark-page .bar { position: absolute; left: 0.45in; right: 0.45in; bottom: 0.3in; height: 0.28in; background: var(--sage); z-index: 1; border-radius: 2px; }
+  .dark-page .footer { bottom: 0.3in; color: #F2F6F1; padding: 6px 14px; }
+  .dark-page .frame { position: absolute; left: 4.1in; right: 0.62in; bottom: 0.3in; height: 1.95in; border-radius: 14px 14px 0 0; border: 1.5px solid rgba(255,255,255,.35); border-bottom: none; background: url('assets/interior_modulo.webp') center 45%/cover no-repeat; z-index: 2; }
+
+  /* ---------- ANEXO: INFOGRAFÍA ---------- */
+  .annex { background: var(--paper); }
+  .annex .head { background: var(--navy); color: #fff; height: 1.55in; padding: 0.42in 0.6in 0; position: relative; overflow: hidden; }
+  .annex .head .arc { width: 2.6in; height: 2.6in; top: -1.3in; right: -0.9in; border-width: 18px; }
+  .annex .head .kicker { font-size: 9pt; letter-spacing: 0.18em; font-weight: 600; color: var(--sage-light); }
+  .annex .head h1 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 25pt; margin-top: 6px; }
+  .annex .body { padding: 0.26in 0.6in 0; }
+  .annex h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 11pt; text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 12px; color: var(--navy); }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+  .stat { background: #fff; border-radius: 10px; padding: 12px 14px; border-top: 5px solid var(--sage); box-shadow: 0 1px 3px rgba(14,47,86,.12); }
+  .stat .big { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 24pt; line-height: 1; color: var(--navy); }
+  .stat .big small { font-size: 11pt; font-weight: 800; }
+  .stat .lbl { font-size: 9.5pt; font-weight: 600; margin-top: 6px; line-height: 1.3; }
+
+  .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px 12px; margin-bottom: 16px; counter-reset: s; }
+  .step { position: relative; background: #fff; border-radius: 10px; padding: 12px 12px 12px 50px; min-height: 0.9in; box-shadow: 0 1px 3px rgba(14,47,86,.12); }
+  .step::before { counter-increment: s; content: counter(s); position: absolute; left: 11px; top: 12px; width: 29px; height: 29px; border-radius: 50%; background: var(--navy); color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 12pt; display: flex; align-items: center; justify-content: center; }
+  .step:nth-child(n+4)::before { background: var(--sage-dark); }
+  .step b { display: block; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 9.5pt; text-transform: uppercase; margin-bottom: 3px; }
+  .step span { font-size: 9pt; font-weight: 500; line-height: 1.35; display: block; }
+  .step .ref { font-size: 7.5pt; font-weight: 700; color: var(--sage-dark); margin-top: 4px; }
+
+  .two { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; }
+  .card { background: #fff; border-radius: 10px; padding: 12px 16px 8px; box-shadow: 0 1px 3px rgba(14,47,86,.12); }
+  .card ul { list-style: none; }
+  .card li { font-size: 9.5pt; font-weight: 500; line-height: 1.35; padding-left: 20px; position: relative; margin-bottom: 7px; }
+  .card li::before { content: ""; position: absolute; left: 0; top: 3px; width: 11px; height: 11px; border-radius: 50%; }
+  .card.no li::before { background: #C8553D; }
+  .card.yes li::before { background: var(--sage-dark); }
+  .plan { border-radius: 10px; background: #fff url('assets/planta_modulo.png') center/contain no-repeat; box-shadow: 0 1px 3px rgba(14,47,86,.12); height: 100%; min-height: 1.9in; }
+
+  .contact { position: absolute; left: 0.6in; right: 0.6in; bottom: 0.6in; background: var(--navy); color: #fff; border-radius: 12px; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+  .contact .t { font-size: 10pt; font-weight: 500; line-height: 1.35; }
+  .contact .mail { font-size: 13pt; color: #fff; background: var(--sage-dark); padding: 8px 14px; border-radius: 8px; }
+  .annex .footer { background: transparent; color: #7C8B9C; bottom: 0.28in; }
+</style>
+</head>
+<body>
+
+<!-- Logotipo KAIR reutilizable -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="kair" viewBox="0 0 520 170">
+      <!-- contorno de casa -->
+      <path d="M8 162 V58 L96 6 L176 54" fill="none" stroke="currentColor" stroke-width="5"/>
+      <path d="M8 162 H150" fill="none" stroke="currentColor" stroke-width="5"/>
+      <!-- K -->
+      <rect x="36" y="44" width="22" height="100" fill="currentColor"/>
+      <polygon points="58,96 108,44 136,44 78,104" fill="currentColor"/>
+      <polygon points="70,98 92,86 140,144 112,144" fill="#8FAF8C"/>
+      <!-- A (sin barra) -->
+      <polygon points="140,144 186,44 208,44 170,144" fill="currentColor"/>
+      <polygon points="186,44 208,44 254,144 224,144" fill="currentColor"/>
+      <!-- I -->
+      <rect x="264" y="44" width="24" height="100" fill="currentColor"/>
+      <!-- R -->
+      <path d="M304 44 H352 C382 44 398 60 398 84 C398 104 386 118 366 122 L402 144 H370 L338 124 H328 V144 H304 Z M328 64 V104 H350 C364 104 372 96 372 84 C372 72 364 64 350 64 Z" fill="currentColor" fill-rule="evenodd"/>
+      <text x="402" y="166" text-anchor="end" font-family="Quicksand, sans-serif" font-weight="600" font-size="19" letter-spacing="5" fill="currentColor">BY KINGSPAN</text>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ================= PÁGINA 1 · PORTADA ================= -->
+<section class="page cover">
+  <div class="arc"></div>
+  <div class="brand">
+    <svg width="210" height="69" style="color:#fff"><use href="#kair"/></svg>
+    <div class="tag">MÓDULOS HABITACIONALES<br>KINGSPAN PANELES AISLADOS S.A.S.</div>
+  </div>
+  <div class="title">
+    <div class="light">POLÍTICA DE</div>
+    <div class="bold">DEVOLUCIÓN<br>DE PRODUCTOS</div>
+    <div class="sub">KAIR by Kingspan · Módulo Familiar</div>
+  </div>
+  <div class="rule"></div>
+  <div class="photo"></div>
+  <div class="footer">Política de Devolución de Producto KAIR - Versión 1 - 29-09-2026</div>
+</section>
+
+<!-- ================= PÁGINA 2 ================= -->
+<section class="page light-page">
+  <div class="bg"></div>
+  <div class="arc"></div>
+  <div class="content">
+    <p>En KINGSPAN PANELES AISLADOS SAS, a través de nuestra línea <strong>KAIR by Kingspan</strong>, nos esforzamos por ofrecer productos y servicios de la más alta calidad. Sin embargo, entendemos que en ocasiones puede ser necesario hacer algún tipo de devolución de producto por diferentes causas.</p>
+    <p style="margin-bottom:4px">A continuación, se detallan las condiciones y procedimientos para realizar devoluciones:</p>
+
+    <h2>1. Condiciones generales</h2>
+    <p class="item"><span class="num">1.1.</span> <span class="lead">Plazo de Devolución:</span> La notificación de que se hará una devolución de productos tendrá un plazo máximo de 5 días hábiles posteriores a la recepción del pedido.</p>
+    <p class="item"><span class="num">1.2.</span> <span class="lead">Estado del Producto:</span> Los productos deben ser devueltos en su estado original. No se aceptan productos que hayan sido instalados, rayados, cortados, o con cualquier tipo de modificación previa.</p>
+    <p class="item"><span class="num">1.3.</span> <span class="lead">Productos No Retornables:</span> Los productos que cumplen con las especificaciones acordadas durante la negociación y que no presentan problemas de calidad no serán aceptados para devolución. Por lo tanto, estos productos deben ser recibidos en el momento de la entrega. En caso de rechazo, los costos asociados a la devolución<span class="star">*</span> serán responsabilidad del cliente.</p>
+    <p class="note"><span class="star">*</span>Se consideran costos asociados a la devolución aquellos relacionados con el transporte desde la planta hasta el lugar de entrega acordado y el retorno desde ese punto de entrega a la planta de fabricación. Además, se incluyen los costos por tiempos de espera (stand by) si estos llegaran a generarse.</p>
+
+    <h2>2. Procedimiento de devolución</h2>
+    <p class="item"><span class="num">2.1.</span> <span class="lead">Solicitud de Devolución:</span> Para iniciar una devolución, contáctanos a través del correo <span class="mail">devolucioneskair@kingspan.com</span> proporcionando factura de venta, motivo de la devolución y evidencia fotográfica del producto.</p>
+  </div>
+  <div class="strip"></div>
+  <div class="footer">Política de Devolución de Producto KAIR - Versión 1 - 29-09-2026</div>
+</section>
+
+<!-- ================= PÁGINA 3 ================= -->
+<section class="page dark-page">
+  <div class="deco"></div><div class="deco b"></div>
+  <div class="content">
+    <p class="item"><span class="num">2.2.</span> <span class="lead">Autorización de Devolución:</span> Una vez recibida la solicitud, el equipo técnico y de calidad de Kingspan Paneles Aislados S.A.S definirá si es necesaria una visita para confirmar el motivo de la devolución y el estado en el que se encuentra el producto. En caso de ser aceptada la devolución, se notificarán a través de correo electrónico las instrucciones para la devolución.</p>
+    <p class="item"><span class="num">2.3.</span> <span class="lead">Envío del Producto:</span> Para el envío del producto, un funcionario de Kingspan Paneles Aislados S.A.S estará en la obra con el objetivo de verificar el estado y cargue del material.</p>
+
+    <h2>3. Procesamiento de devoluciones</h2>
+    <p class="item"><span class="num">3.1.</span> <span class="lead">Reembolsos:</span> Si la devolución es aprobada, dentro de los siguientes 15 días hábiles se procesará el reembolso a través del mismo método de pago original. Recibirás una notificación por correo electrónico una vez que el reembolso haya sido emitido.</p>
+
+    <h2>4. Envíos incorrectos</h2>
+    <p class="item" style="text-align:left"><span class="num">4.1.</span> <span class="lead">Reporte de Problemas:</span> Si recibes un producto incorrecto, notifícanos inmediatamente a través del correo electrónico <span class="mail">devolucioneskair@kingspan.com</span> con una descripción del problema y fotos del defecto o error.</p>
+    <p class="item"><span class="num">4.2.</span> <span class="lead">Reemplazo o Reembolso:</span> En caso de productos o envíos incorrectos, ofreceremos un reemplazo sin costo adicional o un reembolso completo, incluyendo los gastos de envío de la devolución.</p>
+
+    <h2>5. Contacto</h2>
+    <p>Si tienes alguna pregunta sobre nuestra política de devolución, por favor contáctanos a través del correo <span class="mail">devolucioneskair@kingspan.com</span></p>
+  </div>
+  <div class="bar"></div>
+  <div class="frame"></div>
+  <div class="footer">Política de Devolución de Producto KAIR - Versión 1 - 29-09-2026</div>
+</section>
+
+<!-- ================= PÁGINA 4 · ANEXO INFOGRÁFICO ================= -->
+<section class="page annex">
+  <div class="head">
+    <div class="arc"></div>
+    <div class="kicker">ANEXO · GUÍA RÁPIDA PARA CLIENTES Y EQUIPO COMERCIAL</div>
+    <h1>Ruta de devolución KAIR</h1>
+  </div>
+  <div class="body">
+    <div class="stats">
+      <div class="stat"><div class="big">5 <small>días hábiles</small></div><div class="lbl">Plazo máximo para notificar la devolución desde la recepción del pedido (1.1)</div></div>
+      <div class="stat"><div class="big">15 <small>días hábiles</small></div><div class="lbl">Para procesar el reembolso aprobado, por el mismo método de pago original (3.1)</div></div>
+      <div class="stat"><div class="big">$0 <small>al cliente</small></div><div class="lbl">En envíos incorrectos: reemplazo sin costo o reembolso completo, incluido el envío (4.2)</div></div>
+    </div>
+
+    <h3>Procedimiento paso a paso</h3>
+    <div class="flow">
+      <div class="step"><b>Recepción</b><span>El cliente revisa el producto al momento de la entrega.</span><div class="ref">Ref. 1.3</div></div>
+      <div class="step"><b>Solicitud</b><span>Correo a devolucioneskair@kingspan.com con factura, motivo y fotos.</span><div class="ref">Ref. 2.1 · 4.1</div></div>
+      <div class="step"><b>Evaluación</b><span>Equipo técnico y de calidad define si se requiere visita.</span><div class="ref">Ref. 2.2</div></div>
+      <div class="step"><b>Autorización</b><span>Si se acepta, se envían instrucciones por correo electrónico.</span><div class="ref">Ref. 2.2</div></div>
+      <div class="step"><b>Recolección</b><span>Funcionario Kingspan verifica en obra el estado y cargue.</span><div class="ref">Ref. 2.3</div></div>
+      <div class="step"><b>Reembolso</b><span>Dentro de 15 días hábiles, con notificación por correo.</span><div class="ref">Ref. 3.1</div></div>
+    </div>
+
+    <div class="two">
+      <div style="display:grid; gap:12px">
+        <div class="card yes">
+          <h3>Requisitos de la solicitud</h3>
+          <ul>
+            <li>Factura de venta</li>
+            <li>Motivo de la devolución</li>
+            <li>Evidencia fotográfica del producto, defecto o error</li>
+          </ul>
+        </div>
+        <div class="card no">
+          <h3>No se acepta devolución</h3>
+          <ul>
+            <li>Producto instalado, rayado, cortado o modificado</li>
+            <li>Producto conforme a lo negociado y sin problemas de calidad (costos a cargo del cliente si se rechaza)</li>
+            <li>Notificación fuera del plazo de 5 días hábiles</li>
+          </ul>
+        </div>
+      </div>
+      <div class="plan" aria-label="Planta del Módulo Familiar KAIR"></div>
+    </div>
+  </div>
+  <div class="contact">
+    <div class="t"><strong>¿Preguntas sobre la política?</strong><br>Escríbenos y te acompañamos en el proceso.</div>
+    <div class="mail">devolucioneskair@kingspan.com</div>
+  </div>
+  <div class="footer">Política de Devolución de Producto KAIR - Versión 1 - 29-09-2026</div>
+</section>
+
+</body>
+</html>
