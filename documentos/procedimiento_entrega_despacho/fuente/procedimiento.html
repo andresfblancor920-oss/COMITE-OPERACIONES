@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Procedimiento de Entrega y Despacho KAIR</title>
+<link href="fonts.css" rel="stylesheet">
+<style>
+  @page { size: letter; margin: 0; }
+  :root {
+    --navy: #0d2e56; --green: #8faf8b; --green-d: #5b8757; --red: #c7543c;
+    --bg: #f5f7f6; --ink: #0d2e56; --muted: #6b7c8f; --card: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); }
+  body { font-family: 'Quicksand', sans-serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 8.5in; height: 11in; position: relative; overflow: hidden; page-break-after: always; background: var(--bg); }
+  .page:last-child { page-break-after: auto; }
+  .footer { position: absolute; left: 40px; bottom: 30px; background: var(--navy); color: #d5e1ee; font-size: 7.5px; padding: 5px 12px; border-radius: 3px; z-index: 5; }
+  .footer.plain { background: none; color: var(--muted); padding: 0; left: 44px; }
+  .pgnum { position: absolute; right: 44px; bottom: 34px; font-size: 8px; color: var(--muted); z-index: 5; }
+
+  /* Portada */
+  .cover { background: var(--navy); }
+  .cover .ring { position: absolute; right: -60px; top: -250px; width: 400px; height: 400px; border: 26px solid var(--green); border-radius: 50%; }
+  .cover .logo { position: absolute; left: 40px; top: 44px; width: 122px; }
+  .cover .brand { position: absolute; left: 40px; top: 104px; font-family: 'Montserrat'; font-weight: 600; font-size: 7.5px; letter-spacing: .9px; color: #d5e1ee; line-height: 1.6; }
+  .cover h1 { position: absolute; left: 40px; top: 272px; color: #fff; font-family: 'Montserrat'; line-height: 1.02; }
+  .cover h1 .l { font-weight: 300; font-size: 36px; display: block; margin-bottom: 4px; }
+  .cover h1 .b { font-weight: 800; font-size: 41px; display: block; }
+  .cover .sub { position: absolute; left: 40px; top: 462px; color: #dde8da; font-size: 13px; font-weight: 500; }
+  .cover .rule { position: absolute; left: 0; top: 540px; width: 412px; height: 1px; background: rgba(255,255,255,.55); }
+  .cover .photo { position: absolute; left: 0; bottom: 0; width: 100%; height: 459px; background: url(portada.jpg) center/cover; }
+  .cover .photo::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 40px; background: linear-gradient(var(--navy), rgba(13,46,86,0)); }
+
+  /* Páginas internas */
+  .inner .arc { position: absolute; left: -170px; top: -170px; width: 260px; height: 260px; border: 20px solid var(--green); border-radius: 50%; }
+  .inner .house { position: absolute; right: 30px; bottom: 0; width: 380px; opacity: .95; }
+  .inner .ghost { position: absolute; right: -60px; top: 250px; width: 560px; opacity: .06; }
+  .content { position: absolute; left: 70px; right: 70px; top: 76px; font-size: 12.2px; line-height: 1.66; text-align: justify; z-index: 2; }
+  .content p { margin-bottom: 9px; }
+  h2 { font-family: 'Montserrat'; font-weight: 800; font-size: 14px; color: var(--navy); margin: 16px 0 9px; text-transform: uppercase; letter-spacing: .2px; }
+  .item { margin-bottom: 10px; }
+  .item b.n { font-weight: 700; }
+  .item b.t { font-weight: 700; }
+  ul.dots { list-style: none; margin: 4px 0 8px 14px; }
+  ul.dots li { position: relative; padding-left: 14px; margin-bottom: 2px; text-align: left; }
+  ul.dots li::before { content: ""; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; border-radius: 50%; background: var(--green-d); }
+  .note { font-size: 8.4px; font-style: italic; line-height: 1.45; margin-top: -2px; }
+  .note sup, sup.g { color: var(--green-d); font-weight: 700; }
+  .callout { background: #fff; border-left: 4px solid var(--green); border-radius: 6px; padding: 10px 14px; margin: 10px 0 12px; box-shadow: 0 1px 4px rgba(13,46,86,.08); text-align: left; }
+  .callout b { color: var(--navy); }
+  table.fields { width: 100%; border-collapse: collapse; font-size: 10px; line-height: 1.4; margin: 6px 0 12px; background: #fff; text-align: left; }
+  table.fields th { background: var(--navy); color: #fff; font-family: 'Montserrat'; font-weight: 700; font-size: 9px; text-transform: uppercase; letter-spacing: .3px; padding: 6px 9px; }
+  table.fields td { border-bottom: 1px solid #e3e8e6; padding: 5px 9px; vertical-align: top; }
+  table.fields td:first-child { font-weight: 700; width: 34%; }
+  .mail { font-family: 'Montserrat'; font-weight: 800; }
+
+  /* Anexo */
+  .annex .head { position: absolute; left: 0; top: 0; width: 100%; height: 112px; background: var(--navy); overflow: hidden; }
+  .annex .head .ring { position: absolute; right: -40px; top: -170px; width: 270px; height: 270px; border: 20px solid var(--green); border-radius: 50%; }
+  .annex .head .kick { position: absolute; left: 44px; top: 32px; color: #d5e1ee; font-family: 'Montserrat'; font-weight: 600; font-size: 8px; letter-spacing: 2.2px; }
+  .annex .head h1 { position: absolute; left: 44px; top: 48px; color: #fff; font-family: 'Montserrat'; font-weight: 800; font-size: 25px; }
+  .annex .head .logo { position: absolute; right: 150px; top: 36px; width: 86px; }
+  .abody { position: absolute; left: 44px; right: 44px; top: 132px; }
+  .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+  .kpi { background: #fff; border-radius: 8px; border-top: 5px solid var(--green); padding: 10px 12px 12px; box-shadow: 0 1px 5px rgba(13,46,86,.08); font-size: 10px; line-height: 1.45; }
+  .kpi .big { font-family: 'Montserrat'; font-weight: 800; font-size: 25px; line-height: 1; }
+  .kpi .big small { font-size: 11px; font-weight: 800; margin-left: 4px; }
+  .kpi p { margin-top: 7px; }
+  h3 { font-family: 'Montserrat'; font-weight: 800; font-size: 11.5px; letter-spacing: .3px; margin: 0 0 8px; text-transform: uppercase; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-bottom: 14px; }
+  .step { background: #fff; border-radius: 8px; padding: 10px 10px 10px 44px; position: relative; box-shadow: 0 1px 5px rgba(13,46,86,.08); font-size: 9.2px; line-height: 1.42; min-height: 88px; }
+  .step .num { position: absolute; left: 10px; top: 11px; width: 25px; height: 25px; border-radius: 50%; background: var(--navy); color: #fff; font-family: 'Montserrat'; font-weight: 800; font-size: 12px; display: flex; align-items: center; justify-content: center; }
+  .step:nth-child(even) .num { background: var(--green-d); }
+  .step b { display: block; font-family: 'Montserrat'; font-weight: 800; font-size: 9.8px; text-transform: uppercase; margin-bottom: 2px; }
+  .step .ref { color: var(--green-d); font-weight: 700; font-size: 7.6px; margin-top: 4px; }
+  .duo { display: grid; grid-template-columns: 1.1fr 1fr; gap: 10px; }
+  .box { background: #fff; border-radius: 8px; padding: 11px 14px; box-shadow: 0 1px 5px rgba(13,46,86,.08); font-size: 9.6px; line-height: 1.4; }
+  .box + .box { margin-top: 9px; }
+  .box ul { list-style: none; }
+  .box li { position: relative; padding-left: 17px; margin-bottom: 5px; }
+  .box li::before { content: ""; position: absolute; left: 0; top: 3px; width: 8px; height: 8px; border-radius: 50%; background: var(--green-d); }
+  .box.warn li::before { background: var(--red); }
+  .imgbox { background: #fff; border-radius: 8px; box-shadow: 0 1px 5px rgba(13,46,86,.08); display: flex; align-items: center; justify-content: center; padding: 10px; }
+  .imgbox img { width: 100%; }
+  .cta { position: absolute; left: 44px; right: 44px; bottom: 56px; background: var(--navy); border-radius: 10px; padding: 14px 18px; color: #fff; display: flex; justify-content: space-between; align-items: center; font-size: 10.5px; line-height: 1.45; }
+  .cta b { font-family: 'Montserrat'; font-weight: 700; font-size: 11px; }
+  .cta .pill { background: var(--green-d); border-radius: 6px; padding: 8px 14px; font-family: 'Montserrat'; font-weight: 800; font-size: 12px; }
+
+  /* Anexos de ejemplo */
+  .sample { background: #fff; border-radius: 8px; box-shadow: 0 1px 6px rgba(13,46,86,.1); padding: 12px; }
+  .sample img { width: 100%; display: block; }
+  .legend { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 18px; font-size: 9.4px; line-height: 1.4; margin-top: 12px; }
+  .legend div { position: relative; padding-left: 17px; }
+  .legend div::before { content: ""; position: absolute; left: 0; top: 3px; width: 8px; height: 8px; border-radius: 50%; background: var(--green-d); }
+  .caption { font-size: 9px; color: var(--muted); margin-top: 8px; font-style: italic; }
+</style>
+</head>
+<body>
+
+<!-- 1 · PORTADA -->
+<section class="page cover">
+  <div class="ring"></div>
+  <img class="logo" src="logo_kair.png" alt="KAIR by Kingspan">
+  <div class="brand">MÓDULOS HABITACIONALES<br>KINGSPAN PANELES AISLADOS S.A.S.</div>
+  <h1><span class="l">PROCEDIMIENTO DE</span><span class="b">INFORMACIÓN DE</span><span class="b">ENTREGA Y DESPACHO</span></h1>
+  <div class="sub">KAIR by Kingspan · Módulo Familiar</div>
+  <div class="rule"></div>
+  <div class="photo"></div>
+  <div class="footer">Procedimiento de Información de Entrega y Despacho KAIR - Versión 1 - 29-09-2026</div>
+</section>
+
+<!-- 2 -->
+<section class="page inner">
+  <div class="arc"></div>
+  <img class="ghost" src="2.png" alt="">
+  <div class="content">
+    <p>En KINGSPAN PANELES AISLADOS SAS, a través de nuestra línea <b>KAIR by Kingspan</b>, buscamos que cada entrega de nuestros módulos habitacionales sea clara, trazable y verificable. Por esta razón, cada despacho va acompañado de un conjunto definido de información que permite al cliente saber qué recibe, cómo le llega y quién se lo entrega.</p>
+    <p>A continuación, se detallan la estructura de la información de entrega y el procedimiento que deben seguir clientes y equipo comercial:</p>
+
+    <h2>1. Objetivo y alcance</h2>
+    <div class="item"><b class="n">1.1.</b> <b class="t">Objetivo:</b> Formalizar y estandarizar la información y los documentos que acompañan la entrega de cada módulo habitacional KAIR by Kingspan, de forma que el cliente pueda verificar el pedido completo al momento de recibirlo.</div>
+    <div class="item"><b class="n">1.2.</b> <b class="t">Alcance:</b> Aplica a todos los despachos de módulos habitacionales, productos y accesorios KAIR by Kingspan. Es de conocimiento obligatorio para el equipo comercial, que debe informarlo al cliente desde la negociación, y para el cliente o la persona que este designe para recibir la entrega.</div>
+
+    <h2>2. Estructura de la información de entrega</h2>
+    <p>Cada entrega se soporta en cuatro elementos, que se entregan siempre en el siguiente orden:</p>
+    <div class="callout">
+      <b>①</b> Remisión(es) de productos y accesorios &nbsp;·&nbsp; <b>②</b> Lista detallada de empaque (Packing List) &nbsp;·&nbsp; <b>③</b> Información del transporte vía correo electrónico &nbsp;·&nbsp; <b>④</b> Registro fotográfico de cada producto entregado
+    </div>
+
+    <div class="item"><b class="n">2.1.</b> <b class="t">Remisión(es) de productos y accesorios:</b> Documento que viaja junto con el envío y relaciona los productos y accesorios despachados. Puede emitirse más de una remisión por entrega. Contiene como mínimo:</div>
+    <table class="fields">
+      <tr><th>Sección</th><th>Información</th></tr>
+      <tr><td>Encabezado</td><td>Número de remisión, fecha y página.</td></tr>
+      <tr><td>Datos del cliente</td><td>Cliente, NIT o C.C., contacto, dirección, ciudad y teléfono.</td></tr>
+      <tr><td>Referencias comerciales</td><td>Orden de compra (OC), documento alterno y número de pedido de venta (P.V.).</td></tr>
+      <tr><td>Detalle de productos</td><td>Ítem, descripción, lote, unidad de medida (U.M.) y cantidad despachada, con total general.</td></tr>
+      <tr><td>Observación y firmas</td><td>Observación del despacho y firmas de Elaborado, Aprobado y Recibido.</td></tr>
+    </table>
+    <div class="item"><b class="n">2.2.</b> <b class="t">Lista Detallada de Empaque (Packing List):</b> Documento del Proceso de Logística (<i>Formato Producto Terminado Despachado</i>) que viaja junto con el envío y especifica y relaciona cada producto entregado, su volumen y sus cantidades. Contiene como mínimo:</div>
+    <table class="fields">
+      <tr><th>Sección</th><th>Información</th></tr>
+      <tr><td>Datos de la entrega</td><td>Fecha, cliente, dirección de entrega, ciudad, contacto y teléfono.</td></tr>
+      <tr><td>Datos del transporte</td><td>Transportadora, placa del vehículo y nombre del conductor.</td></tr>
+      <tr><td>Detalle por producto</td><td>Ítem, descripción, U.M., número de paquete, longitud (mm), cantidad (und) y total (m², m o und).</td></tr>
+      <tr><td>Subtotales</td><td>Total por cada referencia de producto (cantidad de piezas y volumen).</td></tr>
+      <tr><td>Cierre</td><td>Observaciones; elaborado por (nombre, cargo, firma) y recibido por (nombre, cédula, teléfono, firma y sello).</td></tr>
+    </table>
+
+  </div>
+  <div class="footer">Procedimiento de Información de Entrega y Despacho KAIR - Versión 1 - 29-09-2026</div>
+</section>
+
+<!-- 3 -->
+<section class="page inner">
+  <div class="arc"></div>
+  
+  <div class="content">
+    <div class="item"><b class="n">2.3.</b> <b class="t">Información del Transporte:</b> Previo a la entrega, vía correo electrónico, se compartirá con el contacto del cliente la información de los transportes que realizarán la entrega:</div>
+    <ul class="dots">
+      <li><b>Vehículos:</b> cantidad de vehículos asignados al despacho y placa de cada uno.</li>
+      <li><b>Tipo de vehículo:</b> características del vehículo, para prever el acceso y la zona de descargue en obra.</li>
+      <li><b>Documentación:</b> documentos del vehículo y de la operación de transporte.</li>
+      <li><b>Información de conductores:</b> nombre, identificación y datos de contacto.</li>
+    </ul>
+
+    <div class="item"><b class="n">2.4.</b> <b class="t">Registro Fotográfico:</b> Finalmente, se anexa el registro fotográfico de cada producto entregado, como evidencia del estado, empaque y cantidades del material despachado.</div>
+
+    <h2>3. Recepción y verificación en sitio</h2>
+    <div class="item"><b class="n">3.1.</b> <b class="t">Validación del transporte:</b> Al llegar el vehículo, el cliente valida que la placa y el conductor coincidan con la información recibida por correo electrónico (2.3) y con el Packing List (2.2).</div>
+    <div class="item"><b class="n">3.2.</b> <b class="t">Verificación del material:</b> El cliente revisa las cantidades, referencias y el estado de los productos contra la(s) remisión(es) y el Packing List antes de firmar.</div>
+    <div class="item"><b class="n">3.3.</b> <b class="t">Firma de recibido:</b> La persona que recibe diligencia en la remisión y en el Packing List su nombre, cédula, teléfono, firma y sello. La firma confirma que el material se recibió conforme a lo relacionado en los documentos.</div>
+    <div class="item"><b class="n">3.4.</b> <b class="t">Novedades:</b> Cualquier diferencia en cantidades, referencias o estado del producto debe registrarse en el campo <i>Observaciones</i> antes de firmar, y reportarse al correo <span class="mail">devolucioneskair@kingspan.com</span> con descripción y fotos, conforme a la Política de Devolución de Producto KAIR<sup class="g">*</sup>.</div>
+    <p class="note"><sup>*</sup>De acuerdo con la Política de Devolución de Producto KAIR, los productos que cumplen con las especificaciones acordadas deben ser recibidos en el momento de la entrega (1.3), y la notificación de una devolución tiene un plazo máximo de 5 días hábiles posteriores a la recepción del pedido (1.1).</p>
+    <h2>4. Responsabilidades</h2>
+    <div class="item"><b class="n">4.1.</b> <b class="t">Proceso de Logística:</b> Elaborar y aprobar la(s) remisión(es) y el Packing List; compartir la información del transporte vía correo electrónico; realizar el registro fotográfico de cada producto despachado.</div>
+    <div class="item"><b class="n">4.2.</b> <b class="t">Equipo Comercial:</b> Informar este procedimiento al cliente durante la negociación; confirmar la dirección de entrega, el contacto y el teléfono de quien recibe; acompañar al cliente ante cualquier novedad.</div>
+    <div class="item"><b class="n">4.3.</b> <b class="t">Cliente:</b> Designar a la persona que recibirá la entrega; garantizar el acceso para el vehículo y el descargue; verificar el material y firmar los documentos de recibido.</div>
+
+    <h2>5. Contacto</h2>
+    <p>Si tienes alguna pregunta sobre este procedimiento, comunícate con tu asesor comercial KAIR by Kingspan. Para reportar novedades en el producto recibido, escríbenos al correo <span class="mail">devolucioneskair@kingspan.com</span></p>
+
+  </div>
+  <img class="house" src="2.png" alt="">
+  <div class="footer">Procedimiento de Información de Entrega y Despacho KAIR - Versión 1 - 29-09-2026</div>
+</section>
+
+<!-- 5 · ANEXO GUÍA RÁPIDA -->
+<section class="page annex">
+  <div class="head"><div class="ring"></div>
+    <div class="kick">ANEXO A · GUÍA RÁPIDA PARA CLIENTES Y EQUIPO COMERCIAL</div>
+    <h1>Ruta de entrega KAIR</h1>
+  </div>
+  <div class="abody">
+    <div class="kpis">
+      <div class="kpi"><div class="big">2<small>documentos</small></div><p>Viajan junto con el envío: remisión(es) y Packing List (2.1 · 2.2)</p></div>
+      <div class="kpi"><div class="big">1<small>correo</small></div><p>Con vehículos, tipo de vehículo, documentación y conductores (2.3)</p></div>
+      <div class="kpi"><div class="big">100%<small>fotografiado</small></div><p>Registro fotográfico de cada producto entregado (2.4)</p></div>
+    </div>
+
+    <h3>Procedimiento paso a paso</h3>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><b>Remisión</b>Logística emite la(s) remisión(es) de productos y accesorios.<div class="ref">Ref. 2.1</div></div>
+      <div class="step"><div class="num">2</div><b>Packing List</b>Se relaciona cada producto con paquete, longitud, cantidad y volumen.<div class="ref">Ref. 2.2</div></div>
+      <div class="step"><div class="num">3</div><b>Transporte</b>Por correo se comparten vehículos, tipo, documentación y conductores.<div class="ref">Ref. 2.3</div></div>
+      <div class="step"><div class="num">4</div><b>Registro fotográfico</b>Se anexa la foto de cada producto entregado.<div class="ref">Ref. 2.4</div></div>
+      <div class="step"><div class="num">5</div><b>Verificación</b>El cliente valida vehículo y conductor y revisa el material contra los documentos.<div class="ref">Ref. 3.1 · 3.2</div></div>
+      <div class="step"><div class="num">6</div><b>Recibido</b>Firma, cédula y sello; novedades en Observaciones.<div class="ref">Ref. 3.3 · 3.4</div></div>
+    </div>
+
+    <div class="duo">
+      <div>
+        <div class="box"><h3>Qué recibe el cliente</h3>
+          <ul>
+            <li>Remisión(es) de productos y accesorios</li>
+            <li>Lista detallada de empaque (Packing List)</li>
+            <li>Correo con la información del transporte</li>
+            <li>Registro fotográfico de cada producto</li>
+          </ul>
+        </div>
+        <div class="box warn"><h3>Antes de firmar, verifique</h3>
+          <ul>
+            <li>Placa y conductor iguales a los informados por correo</li>
+            <li>Cantidades y referencias iguales a la remisión y al Packing List</li>
+            <li>Producto sin golpes, rayones ni daños en el empaque</li>
+          </ul>
+        </div>
+      </div>
+      <div class="imgbox"><img src="3.png" alt="Planta del Módulo Familiar KAIR"></div>
+    </div>
+  </div>
+  <div class="cta">
+    <div><b>¿Novedades en la entrega?</b><br>Regístralas en Observaciones y escríbenos con fotos.</div>
+    <div class="pill">devolucioneskair@kingspan.com</div>
+  </div>
+  <div class="footer plain">Procedimiento de Información de Entrega y Despacho KAIR - Versión 1 - 29-09-2026</div>
+</section>
+
+<!-- 6 · ANEXO REMISIÓN -->
+<section class="page annex">
+  <div class="head"><div class="ring"></div>
+    <div class="kick">ANEXO B · DOCUMENTO DE REFERENCIA</div>
+    <h1>Ejemplo de remisión</h1>
+  </div>
+  <div class="abody">
+    <div class="sample"><img src="remision_crop.png" alt="Ejemplo de remisión"></div>
+    <p class="caption">Ejemplo: Remisión No. 22390 · Módulo habitacional muestra - Hilton.</p>
+    <h3 style="margin-top:16px">Campos que el cliente debe revisar</h3>
+    <div class="legend">
+      <div><b>Número y fecha</b> de la remisión</div>
+      <div><b>Cliente, NIT</b> y dirección</div>
+      <div><b>OC, Docto. Alt. y P.V.</b> del pedido</div>
+      <div><b>Ítem y descripción</b> de cada producto</div>
+      <div><b>Lote</b> de fabricación</div>
+      <div><b>U.M. y cantidad despachada</b>, con total</div>
+      <div><b>Observación</b> del despacho</div>
+      <div><b>Firmas</b>: elaborado, aprobado y recibido</div>
+    </div>
+  </div>
+  <div class="footer plain">Procedimiento de Información de Entrega y Despacho KAIR - Versión 1 - 29-09-2026</div>
+</section>
+
+<!-- 7 · ANEXO PACKING LIST -->
+<section class="page annex">
+  <div class="head"><div class="ring"></div>
+    <div class="kick">ANEXO C · DOCUMENTO DE REFERENCIA</div>
+    <h1>Ejemplo de Packing List</h1>
+  </div>
+  <div class="abody">
+    <div class="sample" style="padding:10px 70px"><img src="packing_crop.png" alt="Ejemplo de lista detallada de empaque"></div>
+    <p class="caption">Ejemplo: Formato Producto Terminado Despachado (Proceso de Logística, versión 04) · Hotel Hilton, Cartagena.</p>
+    <h3 style="margin-top:14px">Campos que el cliente debe revisar</h3>
+    <div class="legend">
+      <div><b>Dirección de entrega</b>, contacto y teléfono</div>
+      <div><b>Transportadora, placa</b> y conductor</div>
+      <div><b>Número de paquete</b> y longitud (mm)</div>
+      <div><b>Cantidad (und)</b> y total (m², m o und)</div>
+      <div><b>Subtotal</b> por referencia de producto</div>
+      <div><b>Recibido por</b>: cédula, teléfono, firma y sello</div>
+    </div>
+  </div>
+  <div class="footer plain">Procedimiento de Información de Entrega y Despacho KAIR - Versión 1 - 29-09-2026</div>
+</section>
+
+</body>
+</html>

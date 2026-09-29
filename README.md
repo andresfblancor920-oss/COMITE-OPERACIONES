@@ -103,3 +103,23 @@ cadencia definida — con:
 Estas adiciones se pueden incorporar como hojas nuevas en el Excel (o
 columnas adicionales en las existentes) y diapositivas nuevas en el
 script, siguiendo el mismo patrón que las secciones ya implementadas.
+
+---
+
+## Procedimiento de Información de Entrega y Despacho KAIR
+
+`documentos/procedimiento_entrega_despacho/Procedimiento_Entrega_Despacho_KAIR.pdf`
+formaliza, ante clientes y equipo comercial, la información que acompaña
+cada despacho del módulo habitacional KAIR by Kingspan: remisión(es),
+lista detallada de empaque (Packing List), información del transporte
+por correo electrónico y registro fotográfico. Sigue el formato de la
+Política de Devolución de Producto KAIR e incluye como anexos una guía
+rápida y los ejemplos de remisión y Packing List.
+
+Para modificarlo, edite `documentos/procedimiento_entrega_despacho/fuente/procedimiento.html`
+y regenere el PDF con:
+
+```bash
+pip install playwright
+python scripts/generar_pdf_procedimiento_entrega.py
+```
