@@ -68,6 +68,13 @@
   .light-page .strip { position: absolute; right: 0; bottom: 0; width: 5.6in; height: 1.45in; background: url('assets/render_exterior.png') 55% 40%/112% auto no-repeat; z-index: 2; }
   .light-page .footer { background: var(--navy); color: #C9D6E6; opacity: .9; white-space: nowrap; }
 
+  .delivery .content { top: 0.9in; }
+  .delivery .content .item { margin-bottom: 13px; }
+  .kit { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: -2px 0 16px; }
+  .kit .chip { background: #fff; border-left: 5px solid var(--sage); border-radius: 6px; padding: 7px 10px; box-shadow: 0 1px 3px rgba(14,47,86,.12); }
+  .kit .chip b { display: block; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 10pt; color: var(--navy); }
+  .kit .chip span { font-size: 8.5pt; font-weight: 600; color: #50627A; }
+
   /* Página 3: fondo azul */
   .dark-page { background: linear-gradient(160deg, var(--navy-2) 0%, var(--navy) 60%, #0A2544 100%); color: #fff; }
   .dark-page .content { top: 0.75in; }
@@ -114,6 +121,31 @@
   .contact .t { font-size: 10pt; font-weight: 500; line-height: 1.35; }
   .contact .mail { font-size: 13pt; color: #fff; background: var(--sage-dark); padding: 8px 14px; border-radius: 8px; }
   .annex .footer { background: transparent; color: #7C8B9C; bottom: 0.28in; }
+  /* ---------- ANEXO B: PACKING LIST ---------- */
+  .pl .head { height: 1.3in; padding-top: 0.36in; }
+  .pl .head h1 { font-size: 20pt; }
+  .pl .head .arc { right: -1.7in; }
+  .pl .body { padding-top: 0.2in; }
+  .fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px 12px; margin-bottom: 12px; }
+  .fields.f2 { grid-template-columns: repeat(2, 1fr); margin-bottom: 0; }
+  .fields label { display: block; font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: #50627A; }
+  .fields i { display: block; font-style: normal; font-size: 8.5pt; font-weight: 600; min-height: 17px; border-bottom: 1px solid #9FB0C2; padding-top: 2px; }
+  .pl-table { width: 100%; border-collapse: collapse; font-size: 7.6pt; margin-bottom: 12px; background: #fff; }
+  .pl-table th { background: var(--navy); color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 6.8pt; padding: 5px 4px; text-align: center; border: 1px solid var(--navy); }
+  .pl-table td { border: 1px solid #C5D0DC; padding: 0 4px; height: 21px; font-weight: 600; }
+  .pl-table td.c { text-align: center; }
+  .pl-table tbody tr:nth-child(even) td { background: #F2F6F1; }
+  .pl-table tfoot td { background: var(--sage-light); font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 7.5pt; }
+  .box { display: inline-block; width: 10px; height: 10px; border: 1.2px solid var(--navy); border-radius: 2px; vertical-align: -1px; }
+  .pl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .pl-box { background: #fff; border-radius: 10px; padding: 10px 12px; box-shadow: 0 1px 3px rgba(14,47,86,.12); }
+  .pl-box h3 { font-size: 8.5pt; margin-bottom: 8px; }
+  .pl-box h3 small { font-family: 'Quicksand', sans-serif; font-weight: 600; text-transform: none; font-size: 7.5pt; color: #50627A; }
+  .obs { font-size: 8.5pt; font-weight: 600; line-height: 1.5; }
+  .signs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin: 34px 0 12px; }
+  .signs div { font-size: 8pt; font-weight: 700; text-align: center; color: var(--navy); }
+  .signs span { display: block; border-top: 1.2px solid var(--navy); margin-bottom: 4px; }
+  .pl-note { font-size: 8pt; font-weight: 600; line-height: 1.4; background: var(--sage-light); border-radius: 8px; padding: 8px 12px; }
 </style>
 </head>
 <body>
@@ -173,7 +205,7 @@
     <p class="note"><span class="star">*</span>Se consideran costos asociados a la devolución aquellos relacionados con el transporte desde la planta hasta el lugar de entrega acordado y el retorno desde ese punto de entrega a la planta de fabricación. Además, se incluyen los costos por tiempos de espera (stand by) si estos llegaran a generarse.</p>
 
     <h2>2. Procedimiento de devolución</h2>
-    <p class="item"><span class="num">2.1.</span> <span class="lead">Solicitud de Devolución:</span> Para iniciar una devolución, contáctanos a través del correo <span class="mail">devolucioneskair@kingspan.com</span> proporcionando factura de venta, motivo de la devolución y evidencia fotográfica del producto.</p>
+    <p class="item"><span class="num">2.1.</span> <span class="lead">Solicitud de Devolución:</span> Para iniciar una devolución, contáctanos a través del correo <span class="mail">devolucioneskair@kingspan.com</span> proporcionando factura de venta, número de remisión, motivo de la devolución y evidencia fotográfica del producto.</p>
   </div>
   <div class="strip"></div>
   <div class="footer">Política de Devolución de Producto KAIR - Versión 1 - 29-09-2026</div>
@@ -190,22 +222,47 @@
     <p class="item"><span class="num">3.1.</span> <span class="lead">Reembolsos:</span> Si la devolución es aprobada, dentro de los siguientes 15 días hábiles se procesará el reembolso a través del mismo método de pago original. Recibirás una notificación por correo electrónico una vez que el reembolso haya sido emitido.</p>
 
     <h2>4. Envíos incorrectos</h2>
-    <p class="item" style="text-align:left"><span class="num">4.1.</span> <span class="lead">Reporte de Problemas:</span> Si recibes un producto incorrecto, notifícanos inmediatamente a través del correo electrónico <span class="mail">devolucioneskair@kingspan.com</span> con una descripción del problema y fotos del defecto o error.</p>
+    <p class="item" style="text-align:left"><span class="num">4.1.</span> <span class="lead">Reporte de Problemas:</span> Si recibes un producto incorrecto, notifícanos inmediatamente a través del correo electrónico <span class="mail">devolucioneskair@kingspan.com</span> con una descripción del problema, el ítem correspondiente de la lista de empaque (Packing List) y fotos del defecto o error.</p>
     <p class="item"><span class="num">4.2.</span> <span class="lead">Reemplazo o Reembolso:</span> En caso de productos o envíos incorrectos, ofreceremos un reemplazo sin costo adicional o un reembolso completo, incluyendo los gastos de envío de la devolución.</p>
 
-    <h2>5. Contacto</h2>
-    <p>Si tienes alguna pregunta sobre nuestra política de devolución, por favor contáctanos a través del correo <span class="mail">devolucioneskair@kingspan.com</span></p>
   </div>
   <div class="bar"></div>
   <div class="frame"></div>
   <div class="footer">Política de Devolución de Producto KAIR - Versión 1 - 29-09-2026</div>
 </section>
 
-<!-- ================= PÁGINA 4 · ANEXO INFOGRÁFICO ================= -->
+<!-- ================= PÁGINA 4 · ENTREGA Y DOCUMENTACIÓN ================= -->
+<section class="page light-page delivery">
+  <div class="bg"></div>
+  <div class="arc"></div>
+  <div class="content">
+    <h2 style="margin-top:0">5. Entrega y documentación del módulo</h2>
+    <p class="item">Para garantizar la trazabilidad de cada entrega y facilitar la verificación por parte del cliente, el módulo habitacional <strong>KAIR by Kingspan</strong> se entrega acompañado de la siguiente documentación:</p>
+    <p class="item"><span class="num">5.1.</span> <span class="lead">Remisión y Lista Detallada de Empaque (Packing List):</span> Junto al envío se entregan la(s) remisión(es) de productos y accesorios y una lista detallada de empaque (Packing List), donde se especifica y relaciona cada producto entregado, su volumen y cantidades. Ver formato en el Anexo B.</p>
+    <div class="kit">
+      <div class="chip"><b>Kingroof</b><span>Paneles de cubierta</span></div>
+      <div class="chip"><b>Kingfrigo</b><span>Paneles de muro</span></div>
+      <div class="chip"><b>Accesorios</b><span>Remates y perfiles</span></div>
+      <div class="chip"><b>Fijaciones</b><span>Tornillería y anclajes</span></div>
+      <div class="chip"><b>Puertas</b><span>Con marco y herrajes</span></div>
+      <div class="chip"><b>Ventanas</b><span>Con marco y vidrio</span></div>
+    </div>
+    <p class="item"><span class="num">5.2.</span> <span class="lead">Información de Transporte:</span> Vía correo electrónico se compartirá la información de los transportes que realizarán la entrega: vehículos, tipo de vehículo, documentación e información de los conductores.</p>
+    <p class="item"><span class="num">5.3.</span> <span class="lead">Registro Fotográfico:</span> Se anexa el registro fotográfico de cada producto entregado, como soporte del estado del material al momento del despacho.</p>
+    <p class="item"><span class="num">5.4.</span> <span class="lead">Verificación en la Entrega:</span> El cliente deberá verificar el material recibido contra la remisión y el Packing List al momento de la entrega (numeral 1.3). Cualquier faltante, producto incorrecto o novedad deberá reportarse según el numeral 4.1, dentro del plazo establecido en el numeral 1.1.</p>
+
+    <h2>6. Contacto</h2>
+    <p>Si tienes alguna pregunta sobre nuestra política de devolución, por favor contáctanos a través del correo <span class="mail">devolucioneskair@kingspan.com</span></p>
+  </div>
+  <div class="strip"></div>
+  <div class="footer">Política de Devolución de Producto KAIR - Versión 1 - 29-09-2026</div>
+</section>
+
+<!-- ================= PÁGINA 5 · ANEXO A INFOGRÁFICO ================= -->
 <section class="page annex">
   <div class="head">
     <div class="arc"></div>
-    <div class="kicker">ANEXO · GUÍA RÁPIDA PARA CLIENTES Y EQUIPO COMERCIAL</div>
+    <div class="kicker">ANEXO A · GUÍA RÁPIDA PARA CLIENTES Y EQUIPO COMERCIAL</div>
     <h1>Ruta de devolución KAIR</h1>
   </div>
   <div class="body">
@@ -217,8 +274,8 @@
 
     <h3>Procedimiento paso a paso</h3>
     <div class="flow">
-      <div class="step"><b>Recepción</b><span>El cliente revisa el producto al momento de la entrega.</span><div class="ref">Ref. 1.3</div></div>
-      <div class="step"><b>Solicitud</b><span>Correo a devolucioneskair@kingspan.com con factura, motivo y fotos.</span><div class="ref">Ref. 2.1 · 4.1</div></div>
+      <div class="step"><b>Recepción</b><span>El cliente verifica el material contra la remisión y el Packing List.</span><div class="ref">Ref. 1.3 · 5.4</div></div>
+      <div class="step"><b>Solicitud</b><span>Correo a devolucioneskair@kingspan.com con factura, remisión, motivo y fotos.</span><div class="ref">Ref. 2.1 · 4.1</div></div>
       <div class="step"><b>Evaluación</b><span>Equipo técnico y de calidad define si se requiere visita.</span><div class="ref">Ref. 2.2</div></div>
       <div class="step"><b>Autorización</b><span>Si se acepta, se envían instrucciones por correo electrónico.</span><div class="ref">Ref. 2.2</div></div>
       <div class="step"><b>Recolección</b><span>Funcionario Kingspan verifica en obra el estado y cargue.</span><div class="ref">Ref. 2.3</div></div>
@@ -230,7 +287,7 @@
         <div class="card yes">
           <h3>Requisitos de la solicitud</h3>
           <ul>
-            <li>Factura de venta</li>
+            <li>Factura de venta y número de remisión</li>
             <li>Motivo de la devolución</li>
             <li>Evidencia fotográfica del producto, defecto o error</li>
           </ul>
@@ -250,6 +307,74 @@
   <div class="contact">
     <div class="t"><strong>¿Preguntas sobre la política?</strong><br>Escríbenos y te acompañamos en el proceso.</div>
     <div class="mail">devolucioneskair@kingspan.com</div>
+  </div>
+  <div class="footer">Política de Devolución de Producto KAIR - Versión 1 - 29-09-2026</div>
+</section>
+
+<!-- ================= PÁGINA 6 · ANEXO B FORMATO PACKING LIST ================= -->
+<section class="page annex pl">
+  <div class="head">
+    <div class="arc"></div>
+    <div class="kicker">ANEXO B · FORMATO DE ENTREGA</div>
+    <h1>Lista detallada de empaque (Packing List)</h1>
+  </div>
+  <div class="body">
+    <div class="fields">
+      <div><label>N° de remisión</label><i></i></div>
+      <div><label>Fecha de despacho</label><i></i></div>
+      <div><label>Pedido / Orden de compra</label><i></i></div>
+      <div><label>Cliente</label><i></i></div>
+      <div><label>Proyecto / Obra</label><i></i></div>
+      <div><label>Dirección de entrega</label><i></i></div>
+      <div><label>Módulo</label><i>Módulo Familiar KAIR</i></div>
+      <div><label>Asesor comercial</label><i></i></div>
+      <div><label>N° de bultos / paquetes</label><i></i></div>
+    </div>
+
+    <table class="pl-table">
+      <thead><tr><th>Ítem</th><th>Categoría</th><th>Código / Ref.</th><th>Descripción</th><th>Und.</th><th>Cant.</th><th>Dimensiones (L×A×E)</th><th>Vol. (m³)</th><th>Paquete N°</th><th>Foto N°</th><th>Recibido</th></tr></thead>
+      <tbody>
+<tr><td class="c">1</td><td>Kingroof</td><td></td><td>Panel de cubierta Kingroof</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
+<tr><td class="c">2</td><td>Kingroof</td><td></td><td>Remates / caballete de cubierta</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
+<tr><td class="c">3</td><td>Kingfrigo</td><td></td><td>Panel de muro Kingfrigo</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
+<tr><td class="c">4</td><td>Kingfrigo</td><td></td><td>Panel divisorio interior</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
+<tr><td class="c">5</td><td>Accesorios</td><td></td><td>Perfiles, ángulos y remates</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
+<tr><td class="c">6</td><td>Accesorios</td><td></td><td>Sellantes y cintas</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
+<tr><td class="c">7</td><td>Fijaciones</td><td></td><td>Tornillería autoperforante</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
+<tr><td class="c">8</td><td>Fijaciones</td><td></td><td>Anclajes / remaches</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
+<tr><td class="c">9</td><td>Puertas</td><td></td><td>Puerta con marco y herrajes</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
+<tr><td class="c">10</td><td>Ventanas</td><td></td><td>Ventana con marco y vidrio</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
+<tr><td class="c">11</td><td></td><td></td><td></td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
+<tr><td class="c">12</td><td></td><td></td><td></td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
+<tr><td class="c">13</td><td></td><td></td><td></td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr><tr><td class="c">14</td><td></td><td></td><td></td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr><tr><td class="c">15</td><td></td><td></td><td></td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr><tr><td class="c">16</td><td></td><td></td><td></td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
+      </tbody>
+      <tfoot><tr><td colspan="5" style="text-align:right">TOTALES</td><td></td><td></td><td></td><td colspan="3"></td></tr></tfoot>
+    </table>
+
+    <div class="pl-grid">
+      <div class="pl-box">
+        <h3>Información de transporte <small>(también enviada por correo)</small></h3>
+        <div class="fields f2">
+          <div><label>Transportadora</label><i></i></div>
+          <div><label>Tipo de vehículo</label><i></i></div>
+          <div><label>Placa</label><i></i></div>
+          <div><label>Conductor</label><i></i></div>
+          <div><label>Documento de identidad</label><i></i></div>
+          <div><label>Teléfono</label><i></i></div>
+        </div>
+      </div>
+      <div class="pl-box">
+        <h3>Registro fotográfico y observaciones</h3>
+        <div class="obs">Fotos de cada producto entregado: <span class="box"></span> Sí &nbsp; N° de fotos: ______<br><br>Novedades en la entrega: ____________________________ ________________________________________________</div>
+      </div>
+    </div>
+
+    <div class="signs">
+      <div><span></span>Despacha · KAIR by Kingspan</div>
+      <div><span></span>Transportador</div>
+      <div><span></span>Recibe conforme · Cliente</div>
+    </div>
+    <p class="pl-note">Verifique el material contra esta lista al momento de la entrega (numerales 1.3 y 5.4). Reporte faltantes o productos incorrectos a <strong>devolucioneskair@kingspan.com</strong> dentro de los 5 días hábiles siguientes a la recepción (numerales 1.1 y 4.1).</p>
   </div>
   <div class="footer">Política de Devolución de Producto KAIR - Versión 1 - 29-09-2026</div>
 </section>
