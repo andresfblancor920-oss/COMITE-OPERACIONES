@@ -146,6 +146,44 @@
   .signs div { font-size: 8pt; font-weight: 700; text-align: center; color: var(--navy); }
   .signs span { display: block; border-top: 1.2px solid var(--navy); margin-bottom: 4px; }
   .pl-note { font-size: 8pt; font-weight: 600; line-height: 1.4; background: var(--sage-light); border-radius: 8px; padding: 8px 12px; }
+  /* ---------- PROCEDIMIENTO POR DESPACHO ---------- */
+  .proc .head, .ex .head { height: 1.3in; padding-top: 0.36in; }
+  .proc .head h1, .ex .head h1 { font-size: 21pt; }
+  .proc .head .arc, .ex .head .arc { right: -1.5in; }
+  .proc .body { padding-top: 0.22in; }
+  .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+  .phase { background: #fff; border-radius: 10px; box-shadow: 0 1px 3px rgba(14,47,86,.12); overflow: hidden; }
+  .ph-h { background: var(--navy); color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 9.5pt; text-transform: uppercase; padding: 8px 10px 7px 42px; position: relative; min-height: 44px; }
+  .ph-h span { position: absolute; left: 9px; top: 8px; width: 26px; height: 26px; border-radius: 50%; background: var(--sage); display: flex; align-items: center; justify-content: center; font-size: 11pt; }
+  .ph-h small { display: block; font-family: 'Quicksand', sans-serif; font-weight: 600; text-transform: none; font-size: 8pt; color: var(--sage-light); }
+  .phase:nth-child(2) .ph-h { background: var(--sage-dark); } .phase:nth-child(2) .ph-h span { background: var(--navy); }
+  .phase ul { list-style: none; padding: 9px 10px 4px; }
+  .phase li { font-size: 8.6pt; font-weight: 500; line-height: 1.35; margin-bottom: 7px; padding-left: 13px; position: relative; }
+  .phase li::before { content: ""; position: absolute; left: 0; top: 5px; width: 6px; height: 6px; border-radius: 50%; background: var(--sage-dark); }
+  .phase li b { font-weight: 700; }
+  .annex h3 small { font-family: 'Quicksand', sans-serif; font-weight: 600; text-transform: none; letter-spacing: 0; font-size: 8.5pt; color: #50627A; margin-left: 6px; }
+  .xt { width: 100%; border-collapse: collapse; background: #fff; font-size: 8.3pt; box-shadow: 0 1px 3px rgba(14,47,86,.12); }
+  .xt th { background: var(--navy); color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 7.4pt; padding: 6px 6px; text-align: left; }
+  .xt td { padding: 4px 6px; border-bottom: 1px solid #DCE3EA; font-weight: 600; }
+  .xt td:nth-child(5) { text-align: right; } .xt th:nth-child(5) { text-align: right; }
+  .xt tbody tr:nth-child(even) td { background: #F2F6F1; }
+  .xt td.ok { color: var(--sage-dark); font-weight: 800; text-align: center; }
+  .xt-note { font-size: 8.2pt; font-weight: 600; line-height: 1.4; margin: 8px 0 0; color: #3D5068; }
+  .contact-inline { margin-top: 14px; background: var(--navy); color: #fff; border-radius: 12px; padding: 12px 20px 14px; }
+  .contact-inline h2 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13pt; margin-bottom: 4px; }
+  .contact-inline p { font-size: 10.5pt; font-weight: 500; line-height: 1.45; }
+
+  /* ---------- ANEXOS B y C: EJEMPLOS VISUALES ---------- */
+  .ex .body { padding-top: 0.18in; }
+  .ex-intro { font-size: 9pt; font-weight: 600; color: #3D5068; margin-bottom: 10px; }
+  .shot { position: relative; margin: 0 0 14px 22px; background: #fff; border: 1px solid #C5D0DC; border-radius: 6px; padding: 8px; box-shadow: 0 2px 6px rgba(14,47,86,.12); }
+  .shot img { display: block; width: 100%; }
+  .shot.det { width: 5.5in; margin-left: auto; margin-right: auto; }
+  .co { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: var(--sage-dark); color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 9pt; font-style: normal; border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,.3); flex: none; }
+  .shot .co { position: absolute; transform: translate(-50%, -50%); margin-left: 8px; margin-top: 8px; }
+  .legend { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; }
+  .legend li { display: flex; gap: 8px; align-items: flex-start; font-size: 8.6pt; font-weight: 500; line-height: 1.35; }
+  .legend li b { font-weight: 700; }
 </style>
 </head>
 <body>
@@ -236,29 +274,89 @@
   <div class="bg"></div>
   <div class="arc"></div>
   <div class="content">
-    <h2 style="margin-top:0">5. Entrega y documentación del módulo</h2>
-    <p class="item">Para garantizar la trazabilidad de cada entrega y facilitar la verificación por parte del cliente, el módulo habitacional <strong>KAIR by Kingspan</strong> se entrega acompañado de la siguiente documentación:</p>
-    <p class="item"><span class="num">5.1.</span> <span class="lead">Remisión y Lista Detallada de Empaque (Packing List):</span> Junto al envío se entregan la(s) remisión(es) de productos y accesorios y una lista detallada de empaque (Packing List), donde se especifica y relaciona cada producto entregado, su volumen y cantidades. Ver formato en el Anexo B.</p>
+    <h2 style="margin-top:0">5. Entrega y documentación de cada despacho</h2>
+    <p class="item">Para garantizar la trazabilidad de cada entrega y facilitar la verificación por parte del cliente, cada despacho del módulo habitacional <strong>KAIR by Kingspan</strong> se entrega acompañado de la siguiente documentación:</p>
+    <p class="item"><span class="num">5.1.</span> <span class="lead">Remisión:</span> Documento oficial del despacho. Relaciona número y fecha de remisión, cliente, orden de compra (OC) y pedido de venta (P.V.), y por cada ítem: código, descripción, lote, unidad de medida y cantidad despachada. Ver ejemplo en el Anexo B.</p>
+    <p class="item"><span class="num">5.2.</span> <span class="lead">Lista Detallada de Empaque (Packing List):</span> Formato de producto terminado despachado donde se especifica y relaciona cada producto entregado: número de paquete, longitud, cantidad por línea y total por referencia (m², m o unidades). Ver ejemplo en el Anexo C.</p>
     <div class="kit">
-      <div class="chip"><b>Kingroof</b><span>Paneles de cubierta</span></div>
       <div class="chip"><b>Kingfrigo</b><span>Paneles de muro</span></div>
-      <div class="chip"><b>Accesorios</b><span>Remates y perfiles</span></div>
-      <div class="chip"><b>Fijaciones</b><span>Tornillería y anclajes</span></div>
-      <div class="chip"><b>Puertas</b><span>Con marco y herrajes</span></div>
-      <div class="chip"><b>Ventanas</b><span>Con marco y vidrio</span></div>
+      <div class="chip"><b>Kingroof</b><span>Paneles de cubierta</span></div>
+      <div class="chip"><b>Accesorios</b><span>Esquineros y remates</span></div>
+      <div class="chip"><b>Fijaciones</b><span>Kit de anclaje</span></div>
+      <div class="chip"><b>Puertas</b><span>Cuando aplique</span></div>
+      <div class="chip"><b>Ventanas</b><span>Cuando aplique</span></div>
     </div>
-    <p class="item"><span class="num">5.2.</span> <span class="lead">Información de Transporte:</span> Vía correo electrónico se compartirá la información de los transportes que realizarán la entrega: vehículos, tipo de vehículo, documentación e información de los conductores.</p>
-    <p class="item"><span class="num">5.3.</span> <span class="lead">Registro Fotográfico:</span> Se anexa el registro fotográfico de cada producto entregado, como soporte del estado del material al momento del despacho.</p>
-    <p class="item"><span class="num">5.4.</span> <span class="lead">Verificación en la Entrega:</span> El cliente deberá verificar el material recibido contra la remisión y el Packing List al momento de la entrega (numeral 1.3). Cualquier faltante, producto incorrecto o novedad deberá reportarse según el numeral 4.1, dentro del plazo establecido en el numeral 1.1.</p>
-
-    <h2>6. Contacto</h2>
-    <p>Si tienes alguna pregunta sobre nuestra política de devolución, por favor contáctanos a través del correo <span class="mail">devolucioneskair@kingspan.com</span></p>
+    <p class="item"><span class="num">5.3.</span> <span class="lead">Información de Transporte:</span> Antes de la entrega se compartirá vía correo electrónico la información de los transportes que realizarán el despacho: transportadora, vehículo y tipo de vehículo, placa, documentación e información de los conductores.</p>
+    <p class="item"><span class="num">5.4.</span> <span class="lead">Registro Fotográfico:</span> Se anexa el registro fotográfico de cada producto entregado, como soporte del estado del material al momento del despacho.</p>
+    <p class="item"><span class="num">5.5.</span> <span class="lead">Verificación en la Entrega:</span> El cliente deberá verificar el material recibido contra la remisión y la lista detallada al momento de la entrega (numeral 1.3), registrar cualquier novedad en el campo de observaciones y firmar como recibido. Cualquier faltante, producto incorrecto o novedad deberá reportarse según el numeral 4.1, dentro del plazo establecido en el numeral 1.1.</p>
   </div>
   <div class="strip"></div>
   <div class="footer">Política de Devolución de Producto KAIR - Versión 1 - 29-09-2026</div>
 </section>
 
-<!-- ================= PÁGINA 5 · ANEXO A INFOGRÁFICO ================= -->
+<!-- ================= PÁGINA 5 · PROCEDIMIENTO POR DESPACHO ================= -->
+<section class="page annex proc">
+  <div class="head">
+    <div class="arc"></div>
+    <div class="kicker">NUMERAL 5 · PROCEDIMIENTO</div>
+    <h1>Entrega por despacho, paso a paso</h1>
+  </div>
+  <div class="body">
+    <div class="phases">
+      <div class="phase">
+        <div class="ph-h"><span>1</span>Antes del despacho<small>Kingspan · Logística</small></div>
+        <ul>
+          <li>Emite la <b>remisión</b> con código, lote y cantidad despachada por ítem.</li>
+          <li>Elabora la <b>lista detallada</b> por paquete, longitud y cantidad, firmada por logística.</li>
+          <li>Toma el <b>registro fotográfico</b> de cada producto y paquete.</li>
+          <li>Envía por <b>correo</b> al cliente y al asesor: transportadora, placa, tipo de vehículo y datos del conductor.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="ph-h"><span>2</span>En la entrega<small>Cliente · en obra</small></div>
+        <ul>
+          <li>Confirma que <b>placa y conductor</b> coinciden con el correo recibido.</li>
+          <li>Cuenta paquetes y piezas contra la <b>lista detallada</b> (longitud y cantidad por línea).</li>
+          <li>Revisa el <b>estado físico</b>: golpes, rayones, humedad o deformaciones.</li>
+          <li>Anota las novedades en <b>Observaciones</b> y firma <b>Recibido</b> con nombre, cédula y teléfono.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="ph-h"><span>3</span>Después de la entrega<small>Máximo 5 días hábiles</small></div>
+        <ul>
+          <li>Conserva copia firmada de la remisión y la lista detallada.</li>
+          <li>Reporta faltantes o productos incorrectos a <b>devolucioneskair@kingspan.com</b>.</li>
+          <li>Indica <b>N° de remisión</b>, código del ítem, lote, N° de paquete y fotos.</li>
+          <li>Aplica el procedimiento de los numerales 2 a 4.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>¿Cómo se cruzan la remisión y la lista detallada? <small>Ejemplo: remisión N° 22390</small></h3>
+    <table class="xt">
+      <thead><tr><th>Código</th><th>Descripción</th><th>U.M.</th><th>Lista detallada (cantidad × longitud)</th><th>Remisión (cant. despachada)</th><th>Cuadra</th></tr></thead>
+      <tbody>
+        <tr><td>3110</td><td>Kingfrigo PIR100 CAL28-9002/CAL28-9002</td><td>m²</td><td>8×3,00 + 2×2,70 + 2×2,73 = <b>34,86</b></td><td>34,860</td><td class="ok">✓</td></tr>
+        <tr><td>6099</td><td>Kingroof PIR50 CAL26-7043/CAL28-MADCLARO</td><td>m²</td><td>3×4,75 = <b>14,25</b></td><td>14,250</td><td class="ok">✓</td></tr>
+        <tr><td>315</td><td>Esquinero exterior</td><td>m</td><td>4×3,00 = <b>12,00</b></td><td>12,000</td><td class="ok">✓</td></tr>
+        <tr><td>316</td><td>Esquinero interior</td><td>m</td><td>12×3,00 = <b>36,00</b></td><td>36,000</td><td class="ok">✓</td></tr>
+        <tr><td>308</td><td>Remate frontal 18/30</td><td>m</td><td>2×3,00 = <b>6,00</b></td><td>6,000</td><td class="ok">✓</td></tr>
+        <tr><td>4215</td><td>Remate diseño especial - 7043</td><td>m</td><td>3×3,00 = <b>9,00</b></td><td>9,000</td><td class="ok">✓</td></tr>
+        <tr><td>320</td><td>Remate diseño especial - 9002</td><td>m</td><td>16×2,40 = <b>38,40</b></td><td>38,400</td><td class="ok">✓</td></tr>
+        <tr><td>5626</td><td>Kit de anclaje fachada 100</td><td>und</td><td><b>50</b></td><td>50</td><td class="ok">✓</td></tr>
+      </tbody>
+    </table>
+    <p class="xt-note">En paneles (m²) el total es cantidad × longitud × ancho útil del panel (1,00 m en este ejemplo). El total de cada referencia en la lista detallada debe ser igual a la cantidad despachada en la remisión; si no cuadra, se registra en Observaciones y se reporta según el numeral 4.1.</p>
+
+    <div class="contact-inline">
+      <h2>6. Contacto</h2>
+      <p>Si tienes alguna pregunta sobre nuestra política de devolución, por favor contáctanos a través del correo <span class="mail">devolucioneskair@kingspan.com</span></p>
+    </div>
+  </div>
+  <div class="footer">Política de Devolución de Producto KAIR - Versión 1 - 29-09-2026</div>
+</section>
+
+<!-- ================= PÁGINA 6 · ANEXO A INFOGRÁFICO ================= -->
 <section class="page annex">
   <div class="head">
     <div class="arc"></div>
@@ -311,70 +409,32 @@
   <div class="footer">Política de Devolución de Producto KAIR - Versión 1 - 29-09-2026</div>
 </section>
 
-<!-- ================= PÁGINA 6 · ANEXO B FORMATO PACKING LIST ================= -->
-<section class="page annex pl">
+<!-- ================= PÁGINA 7 · ANEXO B EJEMPLO REMISIÓN ================= -->
+<section class="page annex ex">
   <div class="head">
     <div class="arc"></div>
-    <div class="kicker">ANEXO B · FORMATO DE ENTREGA</div>
+    <div class="kicker">ANEXO B · EJEMPLO VISUAL</div>
+    <h1>Remisión de despacho</h1>
+  </div>
+  <div class="body">
+    <p class="ex-intro">Ejemplo real: remisión N° 22390 del módulo habitacional muestra. Los datos personales se omitieron.</p>
+    <div class="shot"><img src="assets/ejemplo_remision.png" alt="Ejemplo de remisión"><i class="co" style="left:68.5%;top:9%">1</i><i class="co" style="left:-1.5%;top:22.5%">2</i><i class="co" style="left:50%;top:20.5%">3</i><i class="co" style="left:50%;top:39.5%">4</i><i class="co" style="left:-1.5%;top:49.5%">5</i><i class="co" style="left:48.5%;top:49.5%">6</i><i class="co" style="left:84.3%;top:49.5%">7</i><i class="co" style="left:-1.5%;top:80%">8</i><i class="co" style="left:78%;top:95.5%">9</i></div>
+    <ol class="legend"><li><i class="co">1</i><div><b>Número y fecha de remisión.</b> Identifican el despacho; se citan en cualquier reclamo.</div></li><li><i class="co">2</i><div><b>Cliente.</b> Razón social, NIT, dirección, ciudad y teléfono.</div></li><li><i class="co">3</i><div><b>Transportador.</b> Datos de la transportadora (también se envían por correo).</div></li><li><i class="co">4</i><div><b>OC, Docto. Alt. y P.V.</b> Orden de compra y pedido de venta asociados.</div></li><li><i class="co">5</i><div><b>Ítem y descripción.</b> Código de cada referencia despachada.</div></li><li><i class="co">6</i><div><b>Lote.</b> Trazabilidad de fabricación; indíquelo al reportar una novedad.</div></li><li><i class="co">7</i><div><b>Cantidad despachada y U.M.</b> Debe coincidir con el total de la lista detallada.</div></li><li><i class="co">8</i><div><b>Observación.</b> Proyecto u obra a la que corresponde el despacho.</div></li><li><i class="co">9</i><div><b>Firmas.</b> Elaborado, aprobado y <b>recibido</b> por el cliente.</div></li></ol>
+  </div>
+  <div class="footer">Política de Devolución de Producto KAIR - Versión 1 - 29-09-2026</div>
+</section>
+
+<!-- ================= PÁGINA 8 · ANEXO C EJEMPLO LISTA DETALLADA ================= -->
+<section class="page annex ex">
+  <div class="head">
+    <div class="arc"></div>
+    <div class="kicker">ANEXO C · EJEMPLO VISUAL</div>
     <h1>Lista detallada de empaque (Packing List)</h1>
   </div>
   <div class="body">
-    <div class="fields">
-      <div><label>N° de remisión</label><i></i></div>
-      <div><label>Fecha de despacho</label><i></i></div>
-      <div><label>Pedido / Orden de compra</label><i></i></div>
-      <div><label>Cliente</label><i></i></div>
-      <div><label>Proyecto / Obra</label><i></i></div>
-      <div><label>Dirección de entrega</label><i></i></div>
-      <div><label>Módulo</label><i>Módulo Familiar KAIR</i></div>
-      <div><label>Asesor comercial</label><i></i></div>
-      <div><label>N° de bultos / paquetes</label><i></i></div>
-    </div>
-
-    <table class="pl-table">
-      <thead><tr><th>Ítem</th><th>Categoría</th><th>Código / Ref.</th><th>Descripción</th><th>Und.</th><th>Cant.</th><th>Dimensiones (L×A×E)</th><th>Vol. (m³)</th><th>Paquete N°</th><th>Foto N°</th><th>Recibido</th></tr></thead>
-      <tbody>
-<tr><td class="c">1</td><td>Kingroof</td><td></td><td>Panel de cubierta Kingroof</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
-<tr><td class="c">2</td><td>Kingroof</td><td></td><td>Remates / caballete de cubierta</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
-<tr><td class="c">3</td><td>Kingfrigo</td><td></td><td>Panel de muro Kingfrigo</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
-<tr><td class="c">4</td><td>Kingfrigo</td><td></td><td>Panel divisorio interior</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
-<tr><td class="c">5</td><td>Accesorios</td><td></td><td>Perfiles, ángulos y remates</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
-<tr><td class="c">6</td><td>Accesorios</td><td></td><td>Sellantes y cintas</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
-<tr><td class="c">7</td><td>Fijaciones</td><td></td><td>Tornillería autoperforante</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
-<tr><td class="c">8</td><td>Fijaciones</td><td></td><td>Anclajes / remaches</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
-<tr><td class="c">9</td><td>Puertas</td><td></td><td>Puerta con marco y herrajes</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
-<tr><td class="c">10</td><td>Ventanas</td><td></td><td>Ventana con marco y vidrio</td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
-<tr><td class="c">11</td><td></td><td></td><td></td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
-<tr><td class="c">12</td><td></td><td></td><td></td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
-<tr><td class="c">13</td><td></td><td></td><td></td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr><tr><td class="c">14</td><td></td><td></td><td></td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr><tr><td class="c">15</td><td></td><td></td><td></td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr><tr><td class="c">16</td><td></td><td></td><td></td><td class="c"></td><td></td><td></td><td></td><td></td><td></td><td class="c"><span class="box"></span></td></tr>
-      </tbody>
-      <tfoot><tr><td colspan="5" style="text-align:right">TOTALES</td><td></td><td></td><td></td><td colspan="3"></td></tr></tfoot>
-    </table>
-
-    <div class="pl-grid">
-      <div class="pl-box">
-        <h3>Información de transporte <small>(también enviada por correo)</small></h3>
-        <div class="fields f2">
-          <div><label>Transportadora</label><i></i></div>
-          <div><label>Tipo de vehículo</label><i></i></div>
-          <div><label>Placa</label><i></i></div>
-          <div><label>Conductor</label><i></i></div>
-          <div><label>Documento de identidad</label><i></i></div>
-          <div><label>Teléfono</label><i></i></div>
-        </div>
-      </div>
-      <div class="pl-box">
-        <h3>Registro fotográfico y observaciones</h3>
-        <div class="obs">Fotos de cada producto entregado: <span class="box"></span> Sí &nbsp; N° de fotos: ______<br><br>Novedades en la entrega: ____________________________ ________________________________________________</div>
-      </div>
-    </div>
-
-    <div class="signs">
-      <div><span></span>Despacha · KAIR by Kingspan</div>
-      <div><span></span>Transportador</div>
-      <div><span></span>Recibe conforme · Cliente</div>
-    </div>
-    <p class="pl-note">Verifique el material contra esta lista al momento de la entrega (numerales 1.3 y 5.4). Reporte faltantes o productos incorrectos a <strong>devolucioneskair@kingspan.com</strong> dentro de los 5 días hábiles siguientes a la recepción (numerales 1.1 y 4.1).</p>
+    <p class="ex-intro">Ejemplo real: formato de producto terminado despachado del módulo habitacional muestra. Los datos personales se omitieron.</p>
+    <div class="shot det"><img src="assets/ejemplo_lista_detallada.png" alt="Ejemplo de lista detallada"><i class="co" style="left:-1.8%;top:12.5%">1</i><i class="co" style="left:-1.8%;top:17%">2</i><i class="co" style="left:-1.8%;top:25%">3</i><i class="co" style="left:-1.8%;top:28%">4</i><i class="co" style="left:63.3%;top:55%">5</i><i class="co" style="left:72.8%;top:71%">6</i><i class="co" style="left:99.8%;top:36.5%">7</i><i class="co" style="left:-1.8%;top:42.5%">8</i><i class="co" style="left:-1.8%;top:74.5%">9</i><i class="co" style="left:55.3%;top:79.4%">10</i></div>
+    <ol class="legend two-col"><li><i class="co">1</i><div><b>Fecha</b> del despacho (día / mes / año).</div></li><li><i class="co">2</i><div><b>Cliente y dirección de entrega,</b> con ciudad.</div></li><li><i class="co">3</i><div><b>Contacto en obra</b> y teléfono.</div></li><li><i class="co">4</i><div><b>Transportadora, placa y conductor.</b> Verifíquelos contra el correo de transporte.</div></li><li><i class="co">5</i><div><b>Número de paquete</b> en el que viaja cada producto.</div></li><li><i class="co">6</i><div><b>Longitud (mm) y cantidad (und)</b> de cada línea de producto.</div></li><li><i class="co">7</i><div><b>Total por línea</b> en m², m o unidades.</div></li><li><i class="co">8</i><div><b>Subtotal por referencia</b> (filas grises): se compara con la remisión.</div></li><li><i class="co">9</i><div><b>Observaciones.</b> Espacio para registrar novedades en la entrega.</div></li><li><i class="co">10</i><div><b>Recibido por.</b> Nombre, cédula, teléfono, firma y sello del cliente.</div></li></ol>
   </div>
   <div class="footer">Política de Devolución de Producto KAIR - Versión 1 - 29-09-2026</div>
 </section>
