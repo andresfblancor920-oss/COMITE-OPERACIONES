@@ -53,6 +53,44 @@ semana, porque lo sobrescribe).
 
 ---
 
+## Ventas, Revenue y Order Intake (Customer Excellence) — 3 diapositivas
+
+```
+plantilla/Plantilla_Ventas_OrderIntake.xlsx   ← se diligencia cada semana (celdas amarillas)
+scripts/generar_ppt_ventas.py                 ← genera las 3 diapositivas
+scripts/crear_plantilla_ventas.py             ← (re)crea la plantilla Excel con los datos de Septiembre
+ejemplos/Comite_Ventas_Septiembre_W4.pptx     ← resultado con los datos de Septiembre, corte W4
+```
+
+| Diapositiva | Contenido |
+|---|---|
+| 1. Volumen (m²) | KPIs Premium/Estándar vs Budget, tabla por línea con semáforo de cumplimiento semanal (W1–W4), gráfico semanal F'cast vs Real y gráfico Budget vs F'cast vs Real por línea, alertas automáticas |
+| 2. m² y Revenue (COP) | Revenue total (incl. ICO), precio promedio por m², mix por grupo (dona), revenue por línea, tabla m² + COP + % performance |
+| 3. Order Intake | Ganado vs Budget semanal y acumulado, gap, cierre proyectado con pipeline ponderado, top de negocios por ganar, alertas |
+
+Uso semanal:
+
+1. Diligencie en `Plantilla_Ventas_OrderIntake.xlsx` las hojas `Config`, `Ventas_m2`, `Revenue`,
+   `Order_Intake`, `Pipeline` y, si quiere, `Comentarios`. Subtotales, % de cumplimiento, gaps
+   y precios promedio se calculan con fórmulas.
+2. `python scripts/generar_ppt_ventas.py plantilla/Plantilla_Ventas_OrderIntake.xlsx`
+   → `salidas/Comite_Ventas_<Mes>_W<corte>.pptx`.
+
+Los gráficos son nativos de PowerPoint: **clic derecho > Editar datos** abre su Excel embebido
+(celdas amarillas editables, columnas grises con fórmulas) y el gráfico se actualiza sin macros
+ni vínculos. Las tablas, KPIs y alertas se recalculan al volver a correr el script.
+
+Criterios usados:
+- Semáforo: verde ≥ 95 %, amarillo ≥ 85 %, rojo < 85 % (configurable en `Config`).
+- Cumplimiento semanal = Real/Proy de la semana ÷ F'cast semanal.
+- Cierre proyectado = suma de Real/Proy W1–W4 (semanas cerradas + proyección de la semana en curso).
+- Estándar en Revenue incluye Traslúcida en m² y COP; su % de performance se mide solo sobre las
+  líneas que tienen Budget.
+- Proyección de Order Intake = ganado + pipeline ponderado (m² × probabilidad) con cierre en el mes.
+  Las filas de la hoja `Pipeline` son **de ejemplo** y deben reemplazarse por las oportunidades reales.
+
+---
+
 ## Otros reportes de análisis recomendados para el comité
 
 La plantilla actual cubre el "pulso semanal" (KPIs, proyectos, incidentes,
