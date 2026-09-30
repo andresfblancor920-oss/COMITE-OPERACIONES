@@ -1,0 +1,35 @@
+﻿COMITÉ DE OPERACIONES · VENTAS, REVENUE Y ORDER INTAKE (VERSIÓN VINCULADA)
+=========================================================================
+
+Archivos (deben estar en la MISMA carpeta):
+  Base_Comite_Ventas.xlsx        Excel base: aquí se diligencia todo cada semana.
+  Comite_Ventas_Vinculado.pptx   Presentación de 3 diapositivas vinculada al Excel.
+  Actualizar_Rutas.bat / .ps1   Apunta los vínculos al Excel de esta carpeta.
+
+PRIMERA VEZ
+  a) Si la carpeta es C:\Comite_Ventas  -> no hay que hacer nada.
+  b) Si usa otra carpeta: con PowerPoint CERRADO, doble clic en Actualizar_Rutas.bat.
+     (Repítalo si mueve o renombra la carpeta.)
+
+CADA SEMANA
+  1. Abra Base_Comite_Ventas.xlsx. Diligencie las celdas AMARILLAS de las hojas
+     Config, Ventas_m2, Revenue, Order_Intake, Pipeline y Comentarios. Guarde.
+  2. Abra Comite_Ventas_Vinculado.pptx. En el aviso de seguridad elija "Actualizar vínculos".
+     Si no aparece: Archivo > Información > Editar vínculos a archivos >
+     seleccione todos (Ctrl+clic) > Actualizar ahora.
+  3. Para guardar la versión de la semana: Archivo > Guardar como
+     (p. ej. Comite_Ventas_Octubre_W1.pptx). La copia conserva los vínculos;
+     si quiere congelarla, en Editar vínculos use "Romper vínculo".
+
+QUÉ SE ACTUALIZA
+  - Encabezado con mes, corte y fecha; tarjetas KPI con semáforo.
+  - Tablas (volumen, revenue, order intake semanal, top 5 del pipeline).
+  - Alertas (textos armados con fórmulas; primero van sus comentarios).
+  - Los 6 gráficos (clic derecho > Editar datos abre el Excel base).
+
+NOTAS
+  - No cambie el nombre del Excel ni de las hojas PPT_1, PPT_2, PPT_3:
+    los vínculos usan rangos con nombre (S1_Encabezado, S1_Tabla, ...).
+  - PowerPoint para la web / Teams no actualiza vínculos: actualice en la
+    aplicación de escritorio y luego comparta.
+  - Las filas del Pipeline son de EJEMPLO: reemplácelas por las reales.

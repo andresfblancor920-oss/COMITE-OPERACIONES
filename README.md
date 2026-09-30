@@ -91,6 +91,28 @@ Criterios usados:
 
 ---
 
+## Versión vinculada Excel → PowerPoint (sin scripts ni macros)
+
+```
+vinculado/Base_Comite_Ventas.xlsx        ← Excel base: se diligencia cada semana
+vinculado/Comite_Ventas_Vinculado.pptx   ← 3 diapositivas vinculadas al Excel base
+vinculado/Actualizar_Rutas.bat / .ps1    ← apunta los vínculos al Excel de la misma carpeta
+vinculado/LEEME.txt                      ← instrucciones para el usuario final
+scripts/crear_ppt_vinculado.py           ← regenera los archivos de vinculado/ (mantenimiento)
+```
+
+- Todo el cálculo vive en el Excel: las hojas `PPT_1`, `PPT_2` y `PPT_3` arman cada diapositiva con
+  fórmulas (encabezado + KPIs, tablas con semáforo, textos de alerta y datos de los gráficos).
+- En el PowerPoint, esos rangos son objetos de Excel **vinculados** por nombre (`S1_Encabezado`,
+  `S1_Tabla`, `S1_Alertas`, …) y los 6 gráficos son gráficos nativos **vinculados** al mismo libro.
+- Uso semanal: diligenciar y guardar el Excel → abrir el PowerPoint → *Actualizar vínculos*
+  (o Archivo > Información > Editar vínculos a archivos > Actualizar ahora).
+- Los vínculos apuntan por defecto a `C:\Comite_Ventas\Base_Comite_Ventas.xlsx`. Si los archivos
+  están en otra carpeta, ejecutar `Actualizar_Rutas.bat` con PowerPoint cerrado.
+- Requiere PowerPoint de escritorio (Windows); PowerPoint web no actualiza vínculos.
+
+---
+
 ## Otros reportes de análisis recomendados para el comité
 
 La plantilla actual cubre el "pulso semanal" (KPIs, proyectos, incidentes,
