@@ -1,3 +1,47 @@
+# Commercial Review (Kingspan Middle Americas): Data Engine → deck
+
+Flujo mensual del comité comercial con la **nueva estructura de canales y segmentos**:
+
+```
+plantilla/Kingspan_Commercial_Data_Engine.xlsx      ← se actualiza cada mes (celdas amarillas)
+plantilla/Deck_Commercial_Review_Plantilla.pptx     ← deck actualizado (sirve de base el mes siguiente)
+scripts/actualizar_deck_comercial.py                ← regenera los slides desde el Excel
+scripts/crear_data_engine_comercial.py              ← (re)crea el Data Engine desde el original + Presupuesto Junta
+plantilla/fuentes/                                  ← archivos de origen (Data Engine OCT original y Presupuesto Junta)
+```
+
+```bash
+python scripts/actualizar_deck_comercial.py plantilla/Kingspan_Commercial_Data_Engine.xlsx plantilla/Deck_Commercial_Review_Plantilla.pptx salidas/Commercial_Review_<mes>.pptx
+```
+
+El script es idempotente (se puede correr sobre el deck del mes anterior). Si el Excel no tiene
+valores calculados (nunca se abrió en Excel), se recalcula solo con LibreOffice.
+
+### Reglas de la nueva estructura (hoja `22_Canales_Segmentos`)
+
+| Concepto | Regla |
+|---|---|
+| Ventas Alternativas | Valor del canal actual |
+| Industrial + Distribución | Total IMP − Ventas Alternativas, prorrateado con Industrial / (Industrial + Distribución) del canal actual; % manual opcional (fila 16) |
+| Construcción / Refrigeración | Total de los 3 canales × % asignado manualmente (B5 general o fila 24 por métrica) |
+| Presupuesto | `21_Ppto_Junta`: Presupuesto de Junta mensual × participación del presupuesto **anterior** por canal (selector B5: Anterior / Junta) |
+
+Aplica a ventas, order intake, backlog y presupuesto.
+
+### Slides que se generan desde el Excel
+
+| Slide | Fuente |
+|---|---|
+| Commercial Overview: ventas YTD por canal y por segmento + **OI por región** ordenado por volumen | `22_Canales_Segmentos`, `19_OI_Regiones` (selector Mes/YTD) |
+| Order Intake / Backlog del mes: misma estructura, con etiqueta de m² centrada en cada barra | `02_OI` (I:J), `04_Backlog` (G:H) |
+| OI by channel / Backlog by channel: 3 canales + 2 segmentos | `22_Canales_Segmentos` filas 42–63 |
+| Lost Business: tarjetas KPI, tabla ejecutiva y valor perdido por motivo | `20_Lost_Business` (tabla con filtros + consulta interactiva) |
+| RSM Performance by groups (budget de Junta) + resumen por canales y segmentos | `RSM_Resumen_Canales` T:W, `22_Canales_Segmentos` filas 66–75 |
+
+Los puntos abiertos de datos están en la hoja `Validaciones`.
+
+---
+
 # Comité de Operaciones — Plantilla semanal → PowerPoint automático
 
 Este proyecto entrega un **flujo repetible**: cada semana se actualiza un
